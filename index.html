@@ -30,7 +30,7 @@
             position: relative;
         }
 
-        /* Floating Hearts Background Effect */
+        
         .heart-bg {
             position: absolute;
             font-size: 20px;
@@ -40,7 +40,16 @@
             pointer-events: none;
         }
 
-        /* Login Screen */
+        
+        .tap-particle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 24px;
+            z-index: 9999;
+            animation: burstParticle 0.8s ease-out forwards;
+        }
+
+        
         .login-container {
             background-color: var(--container-bg);
             padding: 40px 20px;
@@ -134,7 +143,7 @@
             box-sizing: border-box;
         }
 
-        /* Main Website Dashboard */
+        
         .main-content {
             display: none;
             width: 90%;
@@ -151,7 +160,7 @@
             box-sizing: border-box;
         }
 
-        /* Navigation Tabs */
+        
         .tabs {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -205,7 +214,7 @@
             animation: tabReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Specific Tab styling */
+        
         .letter-box {
             background: white;
             padding: clamp(20px, 5vw, 35px);
@@ -237,13 +246,88 @@
             margin-bottom: 15px;
         }
 
+        
         .music-list, .notes-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .music-item, .note-item {
+        .music-item {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(26, 115, 232, 0.05);
+        }
+
+        .music-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(26, 115, 232, 0.2);
+        }
+
+        .music-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+        }
+
+        .music-item span {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .audio-player-mock {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f0f4f9;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        .play-btn {
+            background: var(--accent-color);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            box-shadow: none;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: none;
+        }
+
+        .progress-bar-mock {
+            flex-grow: 1;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--accent-color);
+            transition: width 0.1s linear;
+        }
+
+        
+        .note-item {
             background: white;
             padding: clamp(14px, 4vw, 18px) clamp(18px, 5vw, 25px);
             border-radius: 15px;
@@ -256,19 +340,87 @@
             border: 1px solid rgba(26, 115, 232, 0.05);
             font-size: clamp(0.9rem, 3.5vw, 1rem);
             word-break: break-word;
+            cursor: pointer;
         }
 
-        .music-item:hover, .note-item:hover {
+        .note-item:hover {
             transform: translateX(8px) scale(1.01);
-            border-color: rgba(26, 115, 232, 0.2);
-            box-shadow: 0 6px 15px rgba(26, 115, 232, 0.1);
+            background: #faffff;
         }
 
-        .music-item span {
+        .heart-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .candy-heart {
+            background: #d0e1fd;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: var(--accent-color);
+            color: #1254a8;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, background-color 0.3s;
+            user-select: none;
+            padding: 5px;
+            box-sizing: border-box;
         }
 
+        .candy-heart:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: #badefc;
+        }
+
+        
+        .coupon-card {
+            background: white;
+            border: 2px dashed var(--accent-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .coupon-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin: 0 0 10px 0;
+        }
+
+        .coupon-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .coupon-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
@@ -283,6 +435,7 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             position: relative;
             height: 200px;
+            cursor: pointer;
         }
 
         .gallery-grid img {
@@ -302,11 +455,29 @@
             transform: scale(1.1);
         }
 
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 25px 10px 10px 10px;
+            font-size: 0.85rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .photo-caption {
+            opacity: 1;
+        }
+
         h3 {
             font-size: clamp(1.2rem, 5vw, 1.5rem);
         }
 
-        /* Desktop specific overrides */
+        
         @media (min-width: 600px) {
             .tabs {
                 grid-template-columns: repeat(4, 1fr);
@@ -316,7 +487,7 @@
             }
         }
 
-        /* Keyframes Animations */
+        
         @keyframes floatCard {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -351,6 +522,11 @@
             20%, 60% { transform: translateX(-10px); }
             40%, 80% { transform: translateX(10px); }
         }
+
+        @keyframes burstParticle {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--mx), var(--my)) scale(0.3); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -366,6 +542,28 @@
             heart.style.fontSize = Math.random() * 15 + 15 + 'px';
             document.body.appendChild(heart);
         }
+
+        
+        document.addEventListener('click', (e) => {
+            if(e.target.tagName === 'BUTTON' || e.target.closest('.gallery-item') || e.target.closest('.note-item') || e.target.closest('.candy-heart')) {
+                const burstItems = ['💙', '✨', '💎', '🌸', '🎈'];
+                for(let i=0; i<6; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'tap-particle';
+                    p.innerText = burstItems[Math.floor(Math.random() * burstItems.length)];
+                    p.style.left = e.pageX + 'px';
+                    p.style.top = e.pageY + 'px';
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = Math.random() * 60 + 40;
+                    p.style.setProperty('--mx', Math.cos(angle) * velocity + 'px');
+                    p.style.setProperty('--my', Math.sin(angle) * velocity + 'px');
+                    
+                    document.body.appendChild(p);
+                    setTimeout(() => p.remove(), 800);
+                }
+            }
+        });
     </script>
 
     <div class="login-container" id="loginScreen">
@@ -401,29 +599,76 @@
         <div id="music" class="tab-content">
             <h3 style="color: var(--accent-color); margin-bottom: 20px;">Songs that remind me of you</h3>
             <ul class="music-list">
-                <li class="music-item">🎵 <span>First Love</span> &nbsp;by Ardhito Pramono</li>
-                <li class="music-item">🎵 <span>Kalapastangan</span> &nbsp;by Fitterkarma</li>
+                <li class="music-item">
+                    <div class="music-info">🎵 <span>First Love</span> &nbsp;by Ardhito Pramono</div>
+                    <div class="audio-player-mock">
+                        <button class="play-btn" onclick="togglePlayMock(this)">▶</button>
+                        <div class="progress-bar-mock"><div class="progress-fill"></div></div>
+                    </div>
+                </li>
+                <li class="music-item">
+                    <div class="music-info">🎵 <span>Kalapastangan</span> &nbsp;by Fitterkarma</div>
+                    <div class="audio-player-mock">
+                        <button class="play-btn" onclick="togglePlayMock(this)">▶</button>
+                        <div class="progress-bar-mock"><div class="progress-fill"></div></div>
+                    </div>
+                </li>
             </ul>
         </div>
 
         <div id="notes" class="tab-content">
-            <h3 style="color: var(--accent-color); margin-bottom: 20px;">Some reminders</h3>
+            <h3 style="color: var(--accent-color); margin-bottom: 10px;">Some reminders</h3>
+            <p style="font-size:0.85rem; color:#777; margin:0 0 15px 0;">✨ Tap any note for a little extra dynamic touch!</p>
             <ul class="notes-list">
-                <li class="note-item">✨ Take care always</li>
-                <li class="note-item">✨ Eat on time</li>
-                <li class="note-item">✨ You're mine, always</li>
+                <li class="note-item" onclick="popNote(this, 'Take care always, because you carry my whole world with you 🌍')">✨ Take care always</li>
+                <li class="note-item" onclick="popNote(this, 'No skipping meals! Fast food or homecooked, fill up that stomach 🍲')">✨ Eat on time</li>
+                <li class="note-item" onclick="popNote(this, 'Locked and sealed 🔐 permanently claimed property right here!')">✨ You're mine, always</li>
+                <li class="note-item" onclick="popNote(this, 'Your grades do not define my love for you. Rest your brilliant mind 🛌')">✨ Don't study too hard, rest when you need to</li>
+                <li class="note-item" onclick="popNote(this, 'Cheering for you loud and clear through every success and every bump 📣')">✨ I am always proud of you, no matter what</li>
             </ul>
+
+            <h3 style="color: var(--accent-color); margin: 25px 0 10px 0;">Conversation Candy Hearts</h3>
+            <div class="heart-wrapper">
+                <div class="candy-heart" onclick="tapCandyHeart(this, 'I LOVE U')">TAP<br>ME</div>
+                <div class="candy-heart" onclick="tapCandyHeart(this, 'BE MINE')">TAP<br>ME</div>
+                <div class="candy-heart" onclick="tapCandyHeart(this, 'CUTIE PIE')">TAP<br>ME</div>
+                <div class="candy-heart" onclick="tapCandyHeart(this, 'MY ALL')">TAP<br>ME</div>
+            </div>
+
+            <div class="coupon-card">
+                <h4 class="coupon-title">Special Love Coupon</h4>
+                <p style="margin: 5px 0 15px 0; font-size: 0.95rem;">Redeemable for one dynamic study date breakaway + heavy snacks on me ☕🍰</p>
+                <button class="coupon-btn" id="couponBtn" onclick="claimCoupon()">Claim Coupon</button>
+            </div>
         </div>
 
         <div id="gallery" class="tab-content">
             <h3 style="color: var(--accent-color); margin-bottom: 20px;">Our Moments</h3>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="https://i.ibb.co/SDHF6tb1/f1dfc14f-c9e0-4f23-9d9c-67ec9f6186d4.jpg" alt=""></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/tpPQnjCw/5cb0de70-5fb3-430f-9a41-f1c29239aee3.jpg" alt=""></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/tpyzMM08/1892cefc-9f66-4e27-8f96-0750354bb20b.jpg" alt=""></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/LX5sFNTx/255e5571-f837-4d0f-8bf6-f762b8a1134e.jpg" alt=""></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/0VRDm1CS/894e762a-d41a-4058-9242-f022f4b0f738.jpg" alt=""></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/nNZj7Fqj/1261e691-836d-4ccf-b1ce-0c20c326f215.jpg" alt=""></div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/SDHF6tb1/f1dfc14f-c9e0-4f23-9d9c-67ec9f6186d4.jpg" alt="">
+                    <div class="photo-caption">My prettiest view 🌊</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/tpPQnjCw/5cb0de70-5fb3-430f-9a41-f1c29239aee3.jpg" alt="">
+                    <div class="photo-caption">Hanging out after class ☕</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/tpyzMM08/1892cefc-9f66-4e27-8f96-0750354bb20b.jpg" alt="">
+                    <div class="photo-caption">Treasured moments 💙</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/LX5sFNTx/255e5571-f837-4d0f-8bf6-f762b8a1134e.jpg" alt="">
+                    <div class="photo-caption">Every second with you is precious ✨</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/0VRDm1CS/894e762a-d41a-4058-9242-f022f4b0f738.jpg" alt="">
+                    <div class="photo-caption">Smiles generated effortlessly 🥰</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/nNZj7Fqj/1261e691-836d-4ccf-b1ce-0c20c326f215.jpg" alt="">
+                    <div class="photo-caption">To infinity and beyond 💎</div>
+                </div>
             </div>
         </div>
     </div>
@@ -463,7 +708,51 @@
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
+
+        function claimCoupon() {
+            const btn = document.getElementById('couponBtn');
+            btn.innerText = 'Claimed! Screenshot this 💙';
+            btn.disabled = true;
+            btn.style.backgroundColor = '#28a745';
+        }
+
+        function popNote(element, message) {
+            element.style.transform = "scale(0.95)";
+            setTimeout(() => {
+                element.style.transform = "none";
+                alert(message);
+            }, 100);
+        }
+
+        function tapCandyHeart(heart, message) {
+            heart.innerText = message;
+            heart.style.backgroundColor = '#fbc2eb';
+            heart.style.color = '#aa1459';
+            setTimeout(() => {
+                heart.innerText = 'TAP\nME';
+                heart.style.backgroundColor = '#d0e1fd';
+                heart.style.color = '#1254a8';
+            }, 2000);
+        }
+
+        let activeIntervals = new Map();
+        function togglePlayMock(btn) {
+            const fill = btn.nextElementSibling.querySelector('.progress-fill');
+            if (btn.innerText === '▶') {
+                btn.innerText = '⏸';
+                let progress = parseFloat(fill.style.width) || 0;
+                const interval = setInterval(() => {
+                    progress += 1;
+                    if (progress > 100) progress = 0;
+                    fill.style.width = progress + '%';
+                }, 200);
+                activeIntervals.set(btn, interval);
+            } else {
+                btn.innerText = '▶';
+                clearInterval(activeIntervals.get(btn));
+                activeIntervals.delete(btn);
+            }
+        }
     </script>
 </body>
 </html>
-
